@@ -11,6 +11,31 @@
 **Perception Radar** is a professional-grade privacy security audit tool designed for mobile devices. By integrating multi-modal sensor data collection and high-precision analysis algorithms, the system can identify and pinpoint hidden electronic devices, such as pinhole cameras, illicit RF eavesdropping devices, and unauthorized network nodes.
 
 ---
+## 📱 兼容性与硬件要求 / Compatibility & Hardware Requirements
+
+### 1. 支持的系统版本 / Supported OS Versions
+* **最低支持 / Minimum**: Android 8.0 (Oreo, API 26) 
+* **推荐版本 / Recommended**: Android 12.0 (API 31) 及以上，以获得更佳的蓝牙扫描性能与权限管理。
+
+### 2. 硬件芯片组支持 / Supported Chipsets
+系统针对以下架构进行了 NDK 指令集优化：
+* **ARMv8-A (64-bit)**: 高通骁龙 (Snapdragon) 6/7/8 系列、联发科 (Dimensity) 天玑系列、三星 Exynos 系列。
+* **传感器要求**: 
+    * **磁力计 (Magnetometer)**: 必须具备，用于磁场异常分析。
+    * **陀螺仪 (Gyroscope)**: 必须具备，用于差分罗盘空间定位。
+    * **蓝牙 5.0+**: 推荐具备，以支持更远距离的信号轨迹追踪。
+
+### 3. Root 权限说明 / Root Access Strategy
+本软件在 **非 Root** 环境下仍可完成 80% 的核心审计功能，但开启 Root 后将解锁“物理层感知”：
+
+| 功能模块 | 非 Root 环境 | Root 环境 (推荐) |
+| :--- | :--- | :--- |
+| **局域网扫描** | 基于存活端口探测 (TCP) | 基于物理层 ARP 扫描，穿透设备伪装 |
+| **MAC 地址溯源** | 仅能获取本地随机化 MAC | 强制读取内核邻居表，获取真实硬件 OUI |
+| **热节流分析** | 受限的 ICMP 回波分析 | 高频 RAW Socket 注入，精度提升 300% |
+| **厂商判定** | 依赖部分公开指纹 | 100% 物理地址厂商强制识别 |
+
+> **安全申明**: 即使在 Root 环境下，本程序依然坚持 **Zero-Cloud** 原则。所有 Root 提权操作仅在本地内核执行，绝不涉及任何系统文件的修改。
 
 ## 🛠️ 核心功能 / Core Features
 
@@ -35,7 +60,6 @@ Analyzes the variance of Round-Trip Time (RTT) by injecting high-frequency ICMP 
 By calculating ambient light differentials, it filters background noise to mark only suspected optical lenses with high-coherence reflection signatures.
 
 ---
-
 ## 📂 使用场景 / Usage Scenarios
 
 | 场景 / Scenario | 审计重点 / Focus | 推荐模式 / Recommended Mode |
