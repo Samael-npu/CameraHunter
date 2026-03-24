@@ -1,26 +1,25 @@
-# Perception Radar 3.0 - 专业级空间安全审计系统
+# Perception Radar 3.0
 
 ![Platform](https://img.shields.io/badge/Platform-Android-green.svg)
 ![Version](https://img.shields.io/badge/Version-3.0_Stable-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-red.svg)
 
-Perception Radar 3.0 是一款基于**物理特性**而非单纯名单匹配的安全工具。它通过手机内置的精密磁传感器与射频模块，探测隐藏在环境中的偷拍设备、录音核心及未经授权的网络节点。
+Perception Radar 3.0 是一款基于**物理特性**而非单纯名单匹配的安全工具。它通过手机内置的精密磁传感器与射频模块，探测隐藏在环境中的偷拍设备、及未经授权的网络节点。
 
 ## 🌟 核心功能
 
 ### 1. 核心源探测 (Focus Mode)
 不同于普通的金属探测，利用数学模型分析磁场能量的**聚焦度**。能有效分辨平缓的背景金属（如钢筋）与极度聚焦的电子元件核心。
 
-### 2. 物理锁定算法 (Sync Locking)
+### 2. 物理锁定 (Sync Locking)
 当环境中存在射频信号（蓝牙/Wi-Fi）且其波动与磁场变化高度**同步**时，雷达会自动锁定该目标为“物理关联设备”，判定其正在实时采集并外传数据。
 
-### 3. 2D 战术寻迹
-仿战斗机雷达设计的 UI 界面，提供：
+### 3. 2D 寻迹
 - **方位解算**：实时指向潜在威胁源。
 - **动态测距**：基于路径损耗模型估算设备距离。
 - **环境自适应**：自动识别物理遮挡（如穿墙）并修正测距精度。
 
-### 4. 内核级审计 (Deep Scan)
+### 4. 内核 (Deep Scan)
 利用 Root 权限（非必须，建议使用）绕过安卓协议栈限制，执行 **JitterPrint™ 协议栈测谎**，识别那些修改了 MAC 地址的伪装设备。
 
 ---
